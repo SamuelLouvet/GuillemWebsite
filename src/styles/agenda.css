@@ -1,0 +1,32 @@
+.section-head-wrap { flex-wrap: wrap; }
+.season-switch { margin-left: auto; display: flex; gap: 8px; }
+.season-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--ink);
+  transition: background .25s, border-color .25s, color .25s;
+}
+.season-btn.active { border-color: var(--accent); background: var(--accent); color: #1A1305; }
+.agenda-list { display: grid; grid-template-columns: 1fr; gap: 0; }
+.agenda-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  align-items: baseline;
+  padding: clamp(14px, 2vw, 24px) 8px;
+  border-top: 1px solid var(--line);
+  transition: background .3s, padding .3s;
+}
+.agenda-list .agenda-row:last-child { border-bottom: 1px solid var(--line); }
+.agenda-row:hover { background: var(--accent-soft); padding-left: 16px; }
+.agenda-date { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: .08em; }
+.agenda-city { font-family: var(--font-display); font-size: clamp(17px, 1.6vw, 22px); }
+.agenda-venue { font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
+.agenda-programme { font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.agenda-status { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); text-align: right; }

@@ -1,0 +1,29 @@
+:root {
+  /* surfaces — deep, warm near-black instead of beige */
+  --bg: #100E0B;
+  --bg-alt: #17130E;
+  --bg-elevated: #1F1911;
+  --bg-contact: #0A0908;
+
+  /* type — high-contrast ivory on dark */
+  --ink: #F4EFE4;
+  --ink-soft: rgba(244, 239, 228, .74);
+  --ink-faint: rgba(244, 239, 228, .54);
+  --ink-fainter: rgba(244, 239, 228, .38);
+
+  --line: rgba(244, 239, 228, .14);
+  --line-strong: rgba(244, 239, 228, .26);
+
+  /* accents — antique brass/gold (primary) + rust (secondary, transitions/CTAs) */
+  --accent: #C9A24C;
+  --accent-soft: rgba(201, 162, 76, .16);
+  --accent-deep: #9C7530;
+  --rust: #B8471F;
+  --rust-soft: rgba(184, 71, 31, .18);
+
+  --font-display: 'Prata', serif;
+  --font-body: 'Cardo', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --shadow-lift: 0 24px 60px -24px rgba(0, 0, 0, .65);
+}

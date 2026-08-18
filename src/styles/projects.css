@@ -1,0 +1,25 @@
+.project-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: center;
+  padding: clamp(18px, 2.2vw, 30px) 10px;
+  border-top: 1px solid var(--line-strong);
+  cursor: pointer;
+  background: none;
+  border-left: none; border-right: none; border-bottom: none;
+  transition: background .3s;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+}
+.project-list { display: block; }
+.project-row:last-child { border-bottom: 1px solid var(--line-strong); }
+.project-row:hover { background: var(--bg-alt); }
+.project-no { font-family: var(--font-mono); font-size: 10px; color: var(--accent); }
+.project-name { font-family: var(--font-display); font-size: clamp(21px, 2.2vw, 32px); }
+.project-head { display: flex; align-items: baseline; gap: 16px; }
+.project-desc { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+.project-meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
+.project-link { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); text-align: right; }

@@ -1,0 +1,32 @@
+.recording-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--bg);
+  position: relative;
+}
+.recording-gallery figure { margin: 0; overflow: hidden; aspect-ratio: 4/5; }
+.recording-gallery img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s cubic-bezier(.2, .7, .2, 1);
+}
+.recording-gallery figure:hover img { transform: scale(1.04); }
+.recording-gallery figcaption {
+  position: absolute;
+  left: clamp(16px, 4vw, 56px);
+  bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--ink);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .6);
+}
+.rg-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+.rg-place { font-family: var(--font-display); font-size: clamp(16px, 1.8vw, 21px); }
+
+@media (max-width: 640px) {
+  .recording-gallery { grid-template-columns: 1fr; }
+  .recording-gallery figure { aspect-ratio: 16/10; }
+  .recording-gallery figcaption { position: static; padding: 14px clamp(16px, 4vw, 56px); text-shadow: none; background: var(--bg); }
+}
