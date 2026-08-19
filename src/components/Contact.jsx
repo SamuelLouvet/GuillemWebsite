@@ -1,4 +1,11 @@
+import { MailIcon, InstagramIcon, YoutubeIcon } from './icons/SocialIcons.jsx';
 import '../styles/contact.css';
+
+const LINKS = [
+  { key: 'mail', Icon: MailIcon, label: 'guillem.ldm@gmail.com', href: 'mailto:guillem.ldm@gmail.com', external: false },
+  { key: 'instagram', Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/guillemlouvet?igsh=MWk2NHZlaHh1ZGsxMA==', external: true },
+  { key: 'youtube', Icon: YoutubeIcon, label: 'YouTube', href: 'https://www.youtube.com/@guilleml4169', external: true },
+];
 
 export default function Contact() {
   return (
@@ -7,25 +14,21 @@ export default function Contact() {
         <span className="section-no">VI</span>
         <h2>Contact <span className="section-sub"><span data-fr>/ Enquiries</span><span data-en>/ Contact</span></span></h2>
       </div>
-      <div className="contact-grid">
-        <div data-reveal>
-          <h3 className="col-title"><span data-fr>Diffusion &amp; concerts</span><span data-en>Bookings</span></h3>
-          <p className="contact-text">Bureau de Concerts Almaviva<br />Élise Fabre<br /><a href="mailto:concerts@almaviva-bureau.com" className="contact-link">concerts@almaviva-bureau.com</a><br />+33 1 44 08 12 60</p>
-        </div>
-        <div data-reveal>
-          <h3 className="col-title"><span data-fr>Presse</span><span data-en>Press</span></h3>
-          <p className="contact-text"><a href="mailto:presse@glm-guitare.com" className="contact-link">presse@glm-guitare.com</a><br /><span data-fr>Dossier, biographies et photographies haute définition.</span><span data-en>Press kit, biographies and high-resolution photographs.</span></p>
-          <a href="#contact" className="btn btn-press"><span data-fr>Dossier de presse ↓</span><span data-en>Press kit ↓</span></a>
-        </div>
-        <div data-reveal>
-          <h3 className="col-title"><span data-fr>Académie &amp; masterclasses</span><span data-en>Academy &amp; masterclasses</span></h3>
-          <p className="contact-text"><span data-fr>Académie de Vallespir — session de juillet.</span><span data-en>Vallespir Academy — July session.</span><br /><a href="mailto:academie@vallespir-guitare.org" className="contact-link">academie@vallespir-guitare.org</a></p>
-        </div>
+      <div className="contact-links" data-reveal>
+        {LINKS.map(({ key, Icon, label, href, external }) => (
+          <a
+            key={key}
+            href={href}
+            className="contact-tile"
+            {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            <Icon className="contact-tile-icon" />
+            <span className="contact-tile-label">{label}</span>
+          </a>
+        ))}
       </div>
       <div className="footer-bar">
-        <a href="mailto:guillem.ldm@gmail.com" className="footer-link">guillem.ldm@gmail.com</a>
-        <a href="https://www.instagram.com/guillemlouvet?igsh=MWk2NHZlaHh1ZGsxMA==" target="_blank" rel="noopener noreferrer" className="footer-link">Instagram</a>
-        <a href="https://www.youtube.com/@guilleml4169" target="_blank" rel="noopener noreferrer" className="footer-link">YouTube</a>
+        <span>Guillem Louvet de Montella</span><span>Vermell — direction retenue</span><span>© 2026</span>
       </div>
     </section>
   );
