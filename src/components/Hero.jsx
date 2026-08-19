@@ -9,8 +9,12 @@ export default function Hero() {
   return (
     <section id="top" className="hero">
       <div className="hero-media" data-par="0.05">
-        <img src={heroImage} alt="Guillem Louvet de Montella en concert, auditorium de Toulouse" data-reveal-scale />
+        <img src={heroImage} alt="Guillem Louvet de Montella en concert à la Chapelle des Carmélites, Toulouse" data-reveal-scale />
         <div className="hero-scrim" />
+        <span className="hero-credit">
+          <span data-fr>Chapelle des Carmélites, Toulouse · mai 2023</span><span data-en>Chapelle des Carmélites, Toulouse · May 2023</span>
+          {' — © Monique Boutolleau'}
+        </span>
       </div>
 
       <div className="hero-content">

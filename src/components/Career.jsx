@@ -1,3 +1,4 @@
+import seasonPhoto from '../assets/images/toulouse-season-announcement.jpg';
 import '../styles/career.css';
 
 export default function Career() {
@@ -7,6 +8,15 @@ export default function Career() {
         <span className="section-no">II</span>
         <h2><span data-fr>Parcours &amp; distinctions</span><span data-en>Career &amp; distinctions</span></h2>
       </div>
+
+      <figure className="season-photo photo-frame" data-reveal-scale>
+        <img src={seasonPhoto} alt="Guillem Louvet de Montella et Rafaël Léger, annonce de la saison Toulouse Guitare 2023/2024" loading="lazy" />
+        <figcaption>
+          <span data-fr>Annonce de saison — avec Rafaël Léger</span><span data-en>Season announcement — with Rafaël Léger</span>
+          <span className="season-photo-meta">Toulouse Guitare 2023/2024 · juin 2023</span>
+        </figcaption>
+      </figure>
+
       <div className="parcours-grid">
         <div>
           <h3 className="col-title"><span data-fr>Distinctions</span><span data-en>Awards</span></h3>

@@ -22,6 +22,17 @@
     linear-gradient(to top, rgba(10, 9, 8, .96) 0%, rgba(10, 9, 8, .55) 42%, rgba(10, 9, 8, .18) 68%, rgba(10, 9, 8, .35) 100%),
     linear-gradient(to right, rgba(10, 9, 8, .35), transparent 55%);
 }
+.hero-credit {
+  position: absolute;
+  right: clamp(16px, 4vw, 56px);
+  bottom: 18px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: rgba(244, 239, 228, .55);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .6);
+}
 
 .hero-content {
   position: absolute;

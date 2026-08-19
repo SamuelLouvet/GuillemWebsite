@@ -6,14 +6,14 @@ export default function RecordingGallery() {
   return (
     <section className="recording-gallery">
       <figure data-reveal-scale>
-        <img src={photo1} alt="Séance d'enregistrement à la Cité de la Musique, Paris" loading="lazy" />
+        <img src={photo1} alt="Séance d'enregistrement sur une guitare romantique d'Étienne Laprevotte, Cité de la musique, Paris" loading="lazy" />
       </figure>
       <figure data-reveal-scale>
-        <img src={photo2} alt="Séance d'enregistrement à la Cité de la Musique, Paris" loading="lazy" />
+        <img src={photo2} alt="Séance d'enregistrement sur une guitare romantique d'Étienne Laprevotte, Cité de la musique, Paris" loading="lazy" />
       </figure>
       <figcaption data-reveal>
-        <span className="rg-label"><span data-fr>Séance d'enregistrement</span><span data-en>Recording session</span></span>
-        <span className="rg-place">Cité de la Musique, Paris</span>
+        <span className="rg-label"><span data-fr>Guitare romantique d'Étienne Laprevotte — Musée de la musique</span><span data-en>Étienne Laprevotte romantic guitar — Musée de la musique</span></span>
+        <span className="rg-place"><span data-fr>Cité de la musique, Paris · septembre 2025 — © Augustin Chabridon</span><span data-en>Cité de la musique, Paris · September 2025 — © Augustin Chabridon</span></span>
       </figcaption>
     </section>
   );

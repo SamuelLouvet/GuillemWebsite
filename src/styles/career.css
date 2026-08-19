@@ -1,3 +1,14 @@
+.season-photo { margin: 0 0 clamp(32px, 4.5vw, 56px); max-width: 640px; }
+.season-photo img { aspect-ratio: 4/3; }
+.season-photo figcaption {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.season-photo figcaption > span:first-child { font-family: var(--font-display); font-size: 17px; color: var(--ink); }
+.season-photo-meta { font-family: var(--font-mono); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
+
 .parcours-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: clamp(28px, 4vw, 60px); }
 .award-row { display: grid; grid-template-columns: 56px 1fr; gap: 14px; padding: 14px 6px; border-top: 1px solid var(--line); transition: background .3s; }
 .award-row-last { border-bottom: 1px solid var(--line); }

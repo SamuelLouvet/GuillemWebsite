@@ -25,7 +25,8 @@ export default function Bio() {
         <div className="bio-aside" data-reveal>
           <div className="bio-aside-top">
             <div className="bio-portrait photo-frame">
-              <img src={portrait} alt="Guillem Louvet de Montella en concert" loading="lazy" />
+              <img src={portrait} alt="Guillem Louvet de Montella en concert à la Chapelle des Carmélites, Toulouse" loading="lazy" />
+              <span className="photo-credit">© M. Boutolleau</span>
             </div>
             <div className="bio-facts">
               <span data-fr>Instrument</span><span data-en>Instrument</span><br /><span className="ink">Fleta, 1974</span><br />
