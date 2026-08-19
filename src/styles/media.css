@@ -20,7 +20,7 @@
   margin-top: clamp(24px, 3.5vw, 44px);
   margin-bottom: clamp(28px, 4vw, 52px);
 }
-.media-hero mux-player { --media-object-fit: cover; }
+.media-hero mux-player { --media-object-fit: cover; --media-object-position: center 20%; }
 .media-hero-scrim {
   position: absolute;
   inset: 0;
