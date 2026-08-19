@@ -9,7 +9,6 @@
 }
 .ticker-track { display: flex; width: max-content; animation: marq 34s linear infinite; }
 .ticker-track-reverse { animation-name: marqReverse; animation-duration: 40s; }
-.repertoire-ticker:hover .ticker-track { animation-play-state: paused; }
 .ticker-set {
   display: flex;
   align-items: center;

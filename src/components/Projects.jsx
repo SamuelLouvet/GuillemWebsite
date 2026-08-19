@@ -1,7 +1,10 @@
 import { PROJECTS } from '../data/projects.js';
+import { COVERS } from '../data/covers.js';
 import { useProjectModal } from '../context/ProjectModalContext.jsx';
 import { staggerDelay } from '../utils/stagger.js';
 import '../styles/projects.css';
+
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 
 const DESCRIPTIONS = [
   <>J. S. Bach — BWV 995, 996, 1006a</>,
@@ -27,15 +30,36 @@ export default function Projects() {
         <h2><span data-fr>Projets</span><span data-en>Projects</span></h2>
       </div>
       <p className="section-intro"><span data-fr>Enregistrements, cycles de concerts et commandes. Sélectionner une entrée pour le détail du programme.</span><span data-en>Recordings, concert cycles and commissions. Select an entry for the full programme.</span></p>
-      <div className="project-list">
-        {PROJECTS.map((p, i) => (
-          <button type="button" key={p.title} className="project-row" data-reveal style={staggerDelay(i)} onClick={() => open(i)}>
-            <div className="project-head"><span className="project-no">{p.no}</span><span className="project-name">{p.title}</span></div>
-            <div className="project-desc">{DESCRIPTIONS[i]}</div>
-            <div className="project-meta">{METAS[i]}</div>
-            <div className="project-link"><span data-fr>Programme →</span><span data-en>Programme →</span></div>
-          </button>
-        ))}
+      <div className="project-grid">
+        {PROJECTS.map((p, i) => {
+          const cover = p.cover ? COVERS[p.cover] : null;
+          return (
+            <button
+              type="button"
+              key={p.title}
+              className={`project-card${cover ? ' has-cover' : ''}`}
+              data-reveal
+              style={staggerDelay(i)}
+              onClick={() => open(i)}
+            >
+              {cover ? (
+                <img className="project-card-img" src={cover} alt={p.title} loading="lazy" />
+              ) : (
+                <span className="project-card-numeral" aria-hidden="true">{ROMAN[i]}</span>
+              )}
+              <span className="project-card-scrim" />
+              <span className="project-card-body">
+                <span className="project-card-top">
+                  <span className="project-no">{p.no}</span>
+                  <span className="project-meta">{METAS[i]}</span>
+                </span>
+                <span className="project-card-name">{p.title}</span>
+                <span className="project-desc">{DESCRIPTIONS[i]}</span>
+                <span className="project-link"><span data-fr>Programme</span><span data-en>Programme</span> <span className="project-link-arrow">→</span></span>
+              </span>
+            </button>
+          );
+        })}
       </div>
     </section>
   );

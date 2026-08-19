@@ -1,26 +1,82 @@
-.project-row {
+.project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  align-items: center;
-  padding: clamp(18px, 2.2vw, 30px) 10px;
-  border-top: 1px solid var(--line-strong);
-  cursor: pointer;
-  background: none;
-  border-left: none; border-right: none; border-bottom: none;
-  transition: background .3s, translate .35s cubic-bezier(.2, .7, .2, 1);
-  text-align: left;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(18px, 2.4vw, 32px);
+}
+
+.project-card {
+  position: relative;
+  display: block;
   width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-elevated);
+  cursor: pointer;
+  text-align: left;
   font: inherit;
   color: inherit;
+  padding: 0;
+  transition: translate .4s cubic-bezier(.2, .7, .2, 1), box-shadow .4s ease, border-color .4s ease;
 }
-.project-list { display: block; }
-.project-row:last-child { border-bottom: 1px solid var(--line-strong); }
-.project-row:hover { background: var(--bg-alt); translate: 8px 0; }
-.project-row:hover .project-no { color: var(--ink); }
-.project-no { font-family: var(--font-mono); font-size: 10px; color: var(--accent); transition: color .3s; }
-.project-name { font-family: var(--font-display); font-size: clamp(21px, 2.2vw, 32px); }
-.project-head { display: flex; align-items: baseline; gap: 16px; }
-.project-desc { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
-.project-meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
-.project-link { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); text-align: right; }
+.project-card:hover { translate: 0 -8px; box-shadow: var(--shadow-lift); border-color: var(--accent); }
+
+.project-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale .6s cubic-bezier(.2, .7, .2, 1);
+}
+.project-card:hover .project-card-img { scale: 1.07; }
+
+.project-card-numeral {
+  position: absolute;
+  right: -.06em;
+  bottom: -.16em;
+  font-family: var(--font-display);
+  font-size: 42vw;
+  line-height: .8;
+  color: var(--accent-soft);
+  pointer-events: none;
+  transition: color .5s ease, translate .5s cubic-bezier(.2, .7, .2, 1);
+}
+@media (min-width: 620px) { .project-card-numeral { font-size: 15vw; } }
+.project-card:hover .project-card-numeral { color: rgba(201, 162, 76, .26); translate: -4px -4px; }
+
+.project-card-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(10, 9, 8, .95) 0%, rgba(10, 9, 8, .58) 40%, rgba(10, 9, 8, .1) 68%);
+}
+.has-cover .project-card-scrim { background: linear-gradient(to top, rgba(10, 9, 8, .96) 0%, rgba(10, 9, 8, .4) 46%, rgba(10, 9, 8, .12) 70%); }
+
+.project-card-body {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(16px, 2.4vw, 26px);
+}
+.project-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.project-no { font-family: var(--font-mono); font-size: 10px; color: var(--accent); }
+.project-meta { font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); text-align: right; }
+.project-card-name { font-family: var(--font-display); font-size: clamp(26px, 3vw, 38px); color: var(--ink); line-height: 1.02; transition: color .3s; }
+.project-card:hover .project-card-name { color: var(--accent); }
+.project-desc { font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+.project-link {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.project-link-arrow { display: inline-block; transition: translate .35s cubic-bezier(.2, .7, .2, 1); }
+.project-card:hover .project-link-arrow { translate: 6px 0; }

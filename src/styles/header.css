@@ -28,10 +28,9 @@
 .main-nav { display: flex; gap: clamp(10px, 1.8vw, 26px); justify-content: center; flex-wrap: wrap; }
 .nav-link {
   position: relative;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: .01em;
   color: var(--ink-soft);
   padding-bottom: 4px;
   transition: color .25s;

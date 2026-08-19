@@ -1,10 +1,8 @@
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { useProjectModal } from '../context/ProjectModalContext.jsx';
 import { PROJECTS } from '../data/projects.js';
-import coverSuites from '../assets/images/cite-musique-2.jpg';
+import { COVERS } from '../data/covers.js';
 import '../styles/project-modal.css';
-
-const COVERS = { 'cite-musique-2': coverSuites };
 
 export default function ProjectModal() {
   const { lang } = useLanguage();
