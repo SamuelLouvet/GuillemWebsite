@@ -22,7 +22,7 @@ export default function VideoLightbox() {
           poster={muxThumbnail(video.playbackId, video.startTime)}
           accentColor="#C9A24C"
           metadataVideoTitle={lang === 'en' ? video.titleEn : video.titleFr}
-          style={{ width: '100%', height: '100%', '--controls-backdrop-color': 'rgba(10,9,8,.7)' }}
+          style={{ '--controls-backdrop-color': 'rgba(10,9,8,.7)' }}
         />
       </div>
     </div>

@@ -10,12 +10,13 @@
   animation: fadeIn .35s ease;
 }
 .lightbox-stage {
-  width: 100%;
-  max-width: 1100px;
-  aspect-ratio: 16/9;
+  max-width: min(92vw, 1100px);
+  max-height: min(88svh, 900px);
   box-shadow: var(--shadow-lift);
   border: 1px solid var(--line-strong);
+  line-height: 0;
 }
+.lightbox-stage mux-player { max-width: min(92vw, 1100px); max-height: min(88svh, 900px); width: auto; height: auto; display: block; }
 .lightbox-close {
   position: absolute;
   top: clamp(16px, 3vw, 32px);

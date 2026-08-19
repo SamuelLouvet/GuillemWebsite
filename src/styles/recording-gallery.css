@@ -15,7 +15,7 @@
 .recording-gallery figcaption {
   position: absolute;
   left: clamp(16px, 4vw, 56px);
-  bottom: 22px;
+  top: 22px;
   display: flex;
   flex-direction: column;
   gap: 4px;
