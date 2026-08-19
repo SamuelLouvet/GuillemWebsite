@@ -16,6 +16,14 @@ export default function Contact() {
           <h3 className="col-title"><span data-fr>Presse</span><span data-en>Press</span></h3>
           <p className="contact-text"><a href="mailto:presse@glm-guitare.com" className="contact-link">presse@glm-guitare.com</a><br /><span data-fr>Dossier, biographies et photographies haute définition.</span><span data-en>Press kit, biographies and high-resolution photographs.</span></p>
           <a href="#contact" className="btn btn-press"><span data-fr>Dossier de presse ↓</span><span data-en>Press kit ↓</span></a>
+          <div className="press-clippings">
+            <span className="press-clippings-label"><span data-fr>Dans la presse</span><span data-en>In the press</span></span>
+            <a href="https://www.ladepeche.fr/2023/05/21/guillem-17-ans-souvre-les-portes-du-conservatoire-national-a-paris-11209460.php" target="_blank" rel="noopener noreferrer" className="press-clipping-link">
+              <span data-fr>« Guillem, 17 ans, s'ouvre les portes du Conservatoire national à Paris »</span>
+              <span data-en>"Guillem, 17, wins a place at the Conservatoire national in Paris"</span>
+              <span className="press-clipping-source">La Dépêche du Midi · mai 2023 ↗</span>
+            </a>
+          </div>
         </div>
         <div data-reveal>
           <h3 className="col-title"><span data-fr>Académie &amp; masterclasses</span><span data-en>Academy &amp; masterclasses</span></h3>

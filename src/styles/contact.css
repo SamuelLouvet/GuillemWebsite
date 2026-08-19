@@ -2,6 +2,13 @@
 .contact-text { margin: 0; font-size: 17px; line-height: 1.7; color: var(--ink-soft); }
 .contact-link { color: var(--ink); border-bottom: 1px solid var(--line-strong); }
 .contact-link:hover { color: var(--accent); border-color: var(--accent); }
+.press-clippings { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(244, 239, 228, .16); }
+.press-clippings-label { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: rgba(244, 239, 228, .5); margin-bottom: 8px; }
+.press-clipping-link { display: flex; flex-direction: column; gap: 4px; color: var(--ink); }
+.press-clipping-link:hover { color: var(--accent); }
+.press-clipping-link span:first-of-type { font-family: var(--font-display); font-size: 15px; line-height: 1.4; }
+.press-clipping-source { font-family: var(--font-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: rgba(244, 239, 228, .5); }
+
 .footer-bar {
   margin-top: clamp(44px, 6vw, 80px);
   padding-top: 20px;

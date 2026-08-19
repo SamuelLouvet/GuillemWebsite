@@ -21,10 +21,8 @@
   align-items: baseline;
   padding: clamp(14px, 2vw, 24px) 8px;
   border-top: 1px solid var(--line);
-  transition: background .3s, padding .3s;
 }
 .agenda-list .agenda-row:last-child { border-bottom: 1px solid var(--line); }
-.agenda-row:hover { background: var(--accent-soft); padding-left: 16px; }
 .agenda-date { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: .08em; }
 .agenda-city { font-family: var(--font-display); font-size: clamp(17px, 1.6vw, 22px); }
 .agenda-venue { font-size: 15px; line-height: 1.5; color: var(--ink-soft); }

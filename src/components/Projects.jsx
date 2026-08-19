@@ -1,10 +1,12 @@
+import { useMemo, useState } from 'react';
 import { PROJECTS } from '../data/projects.js';
 import { COVERS } from '../data/covers.js';
 import { useProjectModal } from '../context/ProjectModalContext.jsx';
-import { staggerDelay } from '../utils/stagger.js';
 import '../styles/projects.css';
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+const N = PROJECTS.length;
+const STEP = 360 / N;
 
 const DESCRIPTIONS = [
   <>J. S. Bach — BWV 995, 996, 1006a</>,
@@ -20,8 +22,43 @@ const METAS = [
   <><span data-fr>Album · à paraître 2027</span><span data-en>Album · 2027 release</span></>,
 ];
 
+function normalize(deg) {
+  let a = deg % 360;
+  if (a > 180) a -= 360;
+  if (a < -180) a += 360;
+  return a;
+}
+
 export default function Projects() {
   const { open } = useProjectModal();
+  const [step, setStep] = useState(0);
+  const activeIndex = ((step % N) + N) % N;
+
+  const goTo = (i) => {
+    const current = ((step % N) + N) % N;
+    let diff = i - current;
+    if (diff > N / 2) diff -= N;
+    if (diff < -N / 2) diff += N;
+    setStep(step + diff);
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key === 'ArrowRight') setStep((s) => s + 1);
+    if (e.key === 'ArrowLeft') setStep((s) => s - 1);
+  };
+
+  const p = PROJECTS[activeIndex];
+
+  const items = useMemo(() => PROJECTS.map((proj, i) => {
+    const angle = (i - step) * STEP;
+    const norm = normalize(angle);
+    const abs = Math.abs(norm);
+    const visible = abs <= 112;
+    const isActive = abs < 2;
+    const opacity = visible ? Math.max(0.15, 1 - abs / 120) : 0;
+    const scale = visible ? 1 - Math.min(abs / 180, 0.42) : 0.55;
+    return { proj, i, angle, abs, visible, isActive, opacity, scale };
+  }), [step]);
 
   return (
     <section id="projets" className="section">
@@ -29,37 +66,59 @@ export default function Projects() {
         <span className="section-no">III</span>
         <h2><span data-fr>Projets</span><span data-en>Projects</span></h2>
       </div>
-      <p className="section-intro"><span data-fr>Enregistrements, cycles de concerts et commandes. Sélectionner une entrée pour le détail du programme.</span><span data-en>Recordings, concert cycles and commissions. Select an entry for the full programme.</span></p>
-      <div className="project-grid">
-        {PROJECTS.map((p, i) => {
-          const cover = p.cover ? COVERS[p.cover] : null;
-          return (
+      <p className="section-intro"><span data-fr>Enregistrements, cycles de concerts et commandes. Faites pivoter le cercle, ou sélectionnez une entrée pour le programme complet.</span><span data-en>Recordings, concert cycles and commissions. Rotate the circle, or select an entry for the full programme.</span></p>
+
+      <div className="orbit" onKeyDown={onKeyDown} tabIndex={0} role="group" aria-label="Projects carousel">
+        <div className="orbit-arc" style={{ '--n': N }}>
+          {items.map(({ proj, i, angle, isActive, visible, opacity, scale }) => {
+            const cover = proj.cover ? COVERS[proj.cover] : null;
+            return (
+              <button
+                type="button"
+                key={proj.title}
+                className={`orbit-item${isActive ? ' is-active' : ''}`}
+                style={{ '--angle': `${angle}deg`, opacity, scale: String(scale), pointerEvents: visible ? 'auto' : 'none' }}
+                onClick={() => (isActive ? open(i) : goTo(i))}
+                aria-current={isActive}
+                aria-label={proj.title}
+              >
+                {cover ? (
+                  <img src={cover} alt="" loading="lazy" />
+                ) : (
+                  <span className="orbit-item-numeral" aria-hidden="true">{ROMAN[i]}</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="orbit-center">
+          <button type="button" className="orbit-nav orbit-prev" onClick={() => setStep((s) => s - 1)} aria-label="Previous project">‹</button>
+          <div className="orbit-desc" key={activeIndex}>
+            <span className="orbit-desc-top">
+              <span className="project-no">{p.no}</span>
+              <span className="project-meta">{METAS[activeIndex]}</span>
+            </span>
+            <span className="orbit-desc-name">{p.title}</span>
+            <span className="project-desc">{DESCRIPTIONS[activeIndex]}</span>
+            <button type="button" className="project-link" onClick={() => open(activeIndex)}>
+              <span data-fr>Programme</span><span data-en>Programme</span> <span className="project-link-arrow">→</span>
+            </button>
+          </div>
+          <button type="button" className="orbit-nav orbit-next" onClick={() => setStep((s) => s + 1)} aria-label="Next project">›</button>
+        </div>
+
+        <div className="orbit-dots">
+          {PROJECTS.map((proj, i) => (
             <button
               type="button"
-              key={p.title}
-              className={`project-card${cover ? ' has-cover' : ''}`}
-              data-reveal
-              style={staggerDelay(i)}
-              onClick={() => open(i)}
-            >
-              {cover ? (
-                <img className="project-card-img" src={cover} alt={p.title} loading="lazy" />
-              ) : (
-                <span className="project-card-numeral" aria-hidden="true">{ROMAN[i]}</span>
-              )}
-              <span className="project-card-scrim" />
-              <span className="project-card-body">
-                <span className="project-card-top">
-                  <span className="project-no">{p.no}</span>
-                  <span className="project-meta">{METAS[i]}</span>
-                </span>
-                <span className="project-card-name">{p.title}</span>
-                <span className="project-desc">{DESCRIPTIONS[i]}</span>
-                <span className="project-link"><span data-fr>Programme</span><span data-en>Programme</span> <span className="project-link-arrow">→</span></span>
-              </span>
-            </button>
-          );
-        })}
+              key={proj.title}
+              className={`orbit-dot${i === activeIndex ? ' active' : ''}`}
+              onClick={() => goTo(i)}
+              aria-label={proj.title}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
