@@ -38,6 +38,18 @@ export default function Bio() {
             <span data-fr>« Une articulation d'orfèvre, et le silence tenu comme une matière. »</span><span data-en>“A goldsmith's articulation, and silence held as a material.”</span>
             <span className="quote-source">Diapason</span>
           </blockquote>
+          <a
+            href="https://www.ladepeche.fr/2023/05/21/guillem-17-ans-souvre-les-portes-du-conservatoire-national-a-paris-11209460.php"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="press-clipping-link"
+          >
+            <span className="press-clipping-title">
+              <span data-fr>« Guillem, 17 ans, s'ouvre les portes du Conservatoire national à Paris »</span>
+              <span data-en>"Guillem, 17, wins a place at the Conservatoire national in Paris"</span>
+            </span>
+            <span className="press-clipping-source">La Dépêche du Midi · mai 2023 ↗</span>
+          </a>
         </div>
       </div>
     </section>
