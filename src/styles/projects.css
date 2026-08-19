@@ -1,11 +1,11 @@
 .orbit {
-  --item-w: clamp(160px, 20vw, 280px);
-  --item-h: clamp(200px, 25vw, 350px);
-  --radius-x: clamp(190px, 32vw, 360px);
+  --item-w: clamp(210px, 26vw, 400px);
+  --item-h: clamp(270px, 33vw, 500px);
+  --radius-x: clamp(240px, 38vw, 470px);
   --radius-y: calc(var(--item-h) / 2 + 24px);
   --max-drop: 10px;
   position: relative;
-  max-width: 860px;
+  max-width: 1180px;
   margin: 0 auto;
   outline: none;
 }
