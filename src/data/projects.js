@@ -58,7 +58,7 @@ export const PROJECTS = [
       { n: '03', title: 'Ohana — Tiento', dur: '5′47″' },
       { n: '04', title: 'Dowland — Come, heavy sleep', dur: '4′22″' },
     ],
-    cover: null,
+    cover: 'toulouse-auditorium-1',
   },
   {
     no: 'N° 03', kind: 'Création · 2026 — 2028', title: 'Six pour six',
@@ -88,7 +88,7 @@ export const PROJECTS = [
       { n: 'V', title: 'Livia Sorel — Harmonique', dur: '2028' },
       { n: 'VI', title: 'Marc Estève — Aigu', dur: '2028' },
     ],
-    cover: null,
+    cover: 'cite-musique-1',
   },
   {
     no: 'N° 04', kind: 'Album · 2027', title: 'Fernando Sor',
@@ -115,6 +115,6 @@ export const PROJECTS = [
       { n: '02', title: 'Vingt-quatre Études, op. 31 — sélection', dur: '14′38″' },
       { n: '03', title: 'Fantaisie élégiaque, op. 59', dur: '16′55″' },
     ],
-    cover: null,
+    cover: 'toulouse-auditorium-2',
   },
 ];

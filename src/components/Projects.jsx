@@ -6,6 +6,9 @@ import '../styles/projects.css';
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI'];
 const N = PROJECTS.length;
+// Must equal 360/N so the arrangement closes into a real circle — with
+// any other step the "previous" and "next" items land at different
+// distances from the front, breaking the left/right symmetry.
 const STEP = 360 / N;
 
 const DESCRIPTIONS = [
@@ -53,10 +56,10 @@ export default function Projects() {
     const angle = (i - step) * STEP;
     const norm = normalize(angle);
     const abs = Math.abs(norm);
-    const visible = abs <= 112;
+    const visible = abs <= 130;
     const isActive = abs < 2;
-    const opacity = visible ? Math.max(0.15, 1 - abs / 120) : 0;
-    const scale = visible ? 1 - Math.min(abs / 180, 0.42) : 0.55;
+    const opacity = visible ? Math.max(0.18, 1 - abs / 140) : 0;
+    const scale = visible ? 1 - Math.min(abs / 200, 0.4) : 0.55;
     return { proj, i, angle, abs, visible, isActive, opacity, scale };
   }), [step]);
 
@@ -66,8 +69,6 @@ export default function Projects() {
         <span className="section-no">III</span>
         <h2><span data-fr>Projets</span><span data-en>Projects</span></h2>
       </div>
-      <p className="section-intro"><span data-fr>Enregistrements, cycles de concerts et commandes. Faites pivoter le cercle, ou sélectionnez une entrée pour le programme complet.</span><span data-en>Recordings, concert cycles and commissions. Rotate the circle, or select an entry for the full programme.</span></p>
-
       <div className="orbit" onKeyDown={onKeyDown} tabIndex={0} role="group" aria-label="Projects carousel">
         <div className="orbit-arc" style={{ '--n': N }}>
           {items.map(({ proj, i, angle, isActive, visible, opacity, scale }) => {
