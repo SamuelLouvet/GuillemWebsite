@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import MuxPlayer from './LazyMuxPlayer.jsx';
 import { useLightbox } from '../context/LightboxContext.jsx';
 import { VIDEOS, muxThumbnail } from '../data/videos.js';
+import { staggerDelay } from '../utils/stagger.js';
 import '../styles/media.css';
 
 const AUDIO_TRACKS = [
@@ -60,10 +61,10 @@ function BackgroundLeadVideo({ video }) {
   );
 }
 
-function VideoRow({ item, video }) {
+function VideoRow({ item, video, index }) {
   const { open } = useLightbox();
   return (
-    <button type="button" className="video-row" onClick={() => open(item.key)}>
+    <button type="button" className="video-row" data-reveal style={staggerDelay(index)} onClick={() => open(item.key)}>
       <span className="video-row-no">{item.no}</span>
       <span className="video-row-thumb">
         <img src={muxThumbnail(video.playbackId, video.startTime)} alt="" loading="lazy" />
@@ -85,9 +86,9 @@ export default function Media() {
 
       <BackgroundLeadVideo video={VIDEOS.main} />
 
-      <div className="video-list" data-reveal>
-        {VIDEO_ROWS.map((item) => (
-          <VideoRow key={item.key} item={item} video={VIDEOS[item.key]} />
+      <div className="video-list">
+        {VIDEO_ROWS.map((item, i) => (
+          <VideoRow key={item.key} item={item} video={VIDEOS[item.key]} index={i} />
         ))}
       </div>
 

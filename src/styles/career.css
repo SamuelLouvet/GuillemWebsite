@@ -10,12 +10,24 @@
 .season-photo-meta { font-family: var(--font-mono); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
 
 .parcours-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: clamp(28px, 4vw, 60px); }
-.award-row { display: grid; grid-template-columns: 56px 1fr; gap: 14px; padding: 14px 6px; border-top: 1px solid var(--line); transition: background .3s; }
+.award-list, .plain-list { color: var(--ink-soft); }
+.award-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  padding: 14px 6px;
+  border-top: 1px solid var(--line);
+  transition: background .3s, translate .35s cubic-bezier(.2, .7, .2, 1);
+}
 .award-row-last { border-bottom: 1px solid var(--line); }
-.award-row:hover { background: var(--accent-soft); }
+.award-row:hover { background: var(--accent-soft); translate: 6px 0; }
 .award-year { font-family: var(--font-mono); font-size: 11px; color: var(--accent); }
-.award-list, .plain-list { transition-delay: .08s; color: var(--ink-soft); }
-.plain-list-loose { transition-delay: .16s; }
-.plain-row { border-top: 1px solid var(--line); padding: 10px 0; font-size: 16px; }
+.plain-row {
+  border-top: 1px solid var(--line);
+  padding: 10px 0;
+  font-size: 16px;
+  transition: color .3s, translate .35s cubic-bezier(.2, .7, .2, 1);
+}
+.plain-row:hover { color: var(--ink); translate: 6px 0; }
 .plain-list-loose .plain-row { padding: 12px 0; line-height: 1.62; }
 .plain-row-last { border-bottom: 1px solid var(--line); }

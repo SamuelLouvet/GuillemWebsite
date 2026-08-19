@@ -8,7 +8,7 @@
   cursor: pointer;
   background: none;
   border-left: none; border-right: none; border-bottom: none;
-  transition: background .3s;
+  transition: background .3s, translate .35s cubic-bezier(.2, .7, .2, 1);
   text-align: left;
   width: 100%;
   font: inherit;
@@ -16,8 +16,9 @@
 }
 .project-list { display: block; }
 .project-row:last-child { border-bottom: 1px solid var(--line-strong); }
-.project-row:hover { background: var(--bg-alt); }
-.project-no { font-family: var(--font-mono); font-size: 10px; color: var(--accent); }
+.project-row:hover { background: var(--bg-alt); translate: 8px 0; }
+.project-row:hover .project-no { color: var(--ink); }
+.project-no { font-family: var(--font-mono); font-size: 10px; color: var(--accent); transition: color .3s; }
 .project-name { font-family: var(--font-display); font-size: clamp(21px, 2.2vw, 32px); }
 .project-head { display: flex; align-items: baseline; gap: 16px; }
 .project-desc { font-size: 15px; line-height: 1.55; color: var(--ink-soft); }

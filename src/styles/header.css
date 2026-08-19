@@ -5,6 +5,11 @@
   background: rgba(16, 14, 11, .78);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
+  transition: background .35s ease, box-shadow .35s ease;
+}
+.site-header.scrolled {
+  background: rgba(16, 14, 11, .94);
+  box-shadow: 0 12px 30px -18px rgba(0, 0, 0, .7);
 }
 .header-inner {
   display: grid;
@@ -12,23 +17,37 @@
   align-items: center;
   gap: 16px;
   padding: 14px clamp(16px, 4vw, 56px);
+  transition: padding .35s ease;
 }
+.site-header.scrolled .header-inner { padding-top: 10px; padding-bottom: 10px; }
+
 .brand { display: flex; align-items: baseline; gap: 10px; color: var(--ink); }
 .brand-mark { font-family: var(--font-display); font-size: 19px; letter-spacing: .04em; }
 .brand-sub { font-family: var(--font-mono); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; opacity: .5; }
 
 .main-nav { display: flex; gap: clamp(10px, 1.8vw, 26px); justify-content: center; flex-wrap: wrap; }
 .nav-link {
+  position: relative;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  border-bottom: 1px solid transparent;
-  padding-bottom: 3px;
-  transition: color .25s, border-color .25s;
+  padding-bottom: 4px;
+  transition: color .25s;
 }
-.nav-link:hover { border-bottom: 1px solid var(--accent); color: var(--accent); }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+}
+.nav-link:hover { color: var(--accent); }
+.nav-link:hover::after { transform: scaleX(1); }
 
 .lang-switch { display: flex; gap: 6px; align-items: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; }
 .lang-btn {
@@ -47,7 +66,7 @@
 .lang-sep { opacity: .3; }
 
 .progress-track { height: 2px; background: transparent; }
-.progress-bar { height: 2px; background: var(--accent); width: 0%; }
+.progress-bar { height: 2px; background: var(--accent); width: 0%; box-shadow: 0 0 10px 0 var(--accent); }
 
 @media (max-width: 760px) {
   .header-inner { grid-template-columns: 1fr; justify-items: center; gap: 10px; padding: 12px 16px; }

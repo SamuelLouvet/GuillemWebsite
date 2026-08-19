@@ -1,5 +1,7 @@
+import { useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import NavLink from './NavLink.jsx';
+import { useMagnetic } from '../hooks/useMagnetic.js';
 import '../styles/header.css';
 
 const NAV = [
@@ -12,11 +14,23 @@ const NAV = [
 
 export default function Header() {
   const { lang, setLang } = useLanguage();
+  const headerRef = useRef(null);
+  const brandRef = useMagnetic(8);
+
+  useEffect(() => {
+    const el = headerRef.current;
+    const onScroll = () => {
+      el.classList.toggle('scrolled', window.scrollY > 24);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       <div className="header-inner">
-        <NavLink to="top" no="—" title="Guillem Louvet de Montella" className="brand">
+        <NavLink ref={brandRef} to="top" no="—" title="Guillem Louvet de Montella" className="brand magnetic">
           <span className="brand-mark">GLM</span>
           <span className="brand-sub"><span data-fr>Guitare classique</span><span data-en>Classical guitar</span></span>
         </NavLink>

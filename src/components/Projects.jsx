@@ -1,5 +1,6 @@
 import { PROJECTS } from '../data/projects.js';
 import { useProjectModal } from '../context/ProjectModalContext.jsx';
+import { staggerDelay } from '../utils/stagger.js';
 import '../styles/projects.css';
 
 const DESCRIPTIONS = [
@@ -28,7 +29,7 @@ export default function Projects() {
       <p className="section-intro"><span data-fr>Enregistrements, cycles de concerts et commandes. Sélectionner une entrée pour le détail du programme.</span><span data-en>Recordings, concert cycles and commissions. Select an entry for the full programme.</span></p>
       <div className="project-list">
         {PROJECTS.map((p, i) => (
-          <button type="button" key={p.title} className="project-row" data-reveal onClick={() => open(i)}>
+          <button type="button" key={p.title} className="project-row" data-reveal style={staggerDelay(i)} onClick={() => open(i)}>
             <div className="project-head"><span className="project-no">{p.no}</span><span className="project-name">{p.title}</span></div>
             <div className="project-desc">{DESCRIPTIONS[i]}</div>
             <div className="project-meta">{METAS[i]}</div>

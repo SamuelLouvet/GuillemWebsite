@@ -5,6 +5,9 @@
   height: 100svh;
   min-height: 560px;
   overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform .2s ease-out;
+  will-change: transform;
 }
 .hero-media img {
   position: absolute;
@@ -76,5 +79,7 @@
 
 .marquee { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; background: var(--bg); }
 .marquee-track { display: flex; width: max-content; animation: marq 42s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-set { display: flex; gap: 44px; padding: 14px 22px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; color: var(--ink-faint); }
-.marquee-set .dot { color: var(--accent); }
+.marquee-set .dot { color: var(--accent); transition: color .3s; }
+.marquee:hover .dot { color: var(--ink); }

@@ -1,0 +1,23 @@
+.repertoire-ticker {
+  background: var(--bg-contact);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  padding: clamp(18px, 3vw, 30px) 0;
+  display: grid;
+  gap: 6px;
+}
+.ticker-track { display: flex; width: max-content; animation: marq 34s linear infinite; }
+.ticker-track-reverse { animation-name: marqReverse; animation-duration: 40s; }
+.repertoire-ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker-set {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+  padding: 0 clamp(10px, 1.5vw, 20px);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.4vw, 40px);
+  color: var(--ink-faint);
+}
+.ticker-dot { margin-left: clamp(20px, 3vw, 40px); font-size: 10px; color: var(--accent); vertical-align: middle; }

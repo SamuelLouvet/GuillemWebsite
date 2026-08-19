@@ -10,6 +10,7 @@ import Hero from './components/Hero.jsx';
 import RecordingGallery from './components/RecordingGallery.jsx';
 import Bio from './components/Bio.jsx';
 import Career from './components/Career.jsx';
+import RepertoireTicker from './components/RepertoireTicker.jsx';
 import Projects from './components/Projects.jsx';
 import ProjectModal from './components/ProjectModal.jsx';
 import Agenda from './components/Agenda.jsx';
@@ -28,6 +29,7 @@ function Page() {
         <RecordingGallery />
         <Bio />
         <Career />
+        <RepertoireTicker />
         <Projects />
         <Agenda />
         <Media />

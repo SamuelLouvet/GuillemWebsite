@@ -1,9 +1,11 @@
+import { forwardRef } from 'react';
 import { useVeil } from '../context/VeilContext.jsx';
 
-export default function NavLink({ to, no, title, className, children }) {
+const NavLink = forwardRef(function NavLink({ to, no, title, className, children }, ref) {
   const { navigate } = useVeil();
   return (
     <a
+      ref={ref}
       href={`#${to}`}
       className={className}
       onClick={(e) => {
@@ -14,4 +16,6 @@ export default function NavLink({ to, no, title, className, children }) {
       {children}
     </a>
   );
-}
+});
+
+export default NavLink;

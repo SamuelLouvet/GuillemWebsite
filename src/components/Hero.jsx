@@ -1,14 +1,20 @@
 import heroImage from '../assets/images/toulouse-auditorium-1.jpg';
 import NavLink from './NavLink.jsx';
 import { useLightbox } from '../context/LightboxContext.jsx';
+import { useMagnetic } from '../hooks/useMagnetic.js';
+import { useTilt } from '../hooks/useTilt.js';
 import '../styles/hero.css';
 
 export default function Hero() {
   const { open } = useLightbox();
+  const tiltRef = useTilt(3.5);
+  const watchRef = useMagnetic(14);
+  const datesRef = useMagnetic(12);
+  const projectsRef = useMagnetic(10);
 
   return (
     <section id="top" className="hero">
-      <div className="hero-media" data-par="0.05">
+      <div className="hero-media" data-par="0.05" ref={tiltRef}>
         <img src={heroImage} alt="Guillem Louvet de Montella en concert à la Chapelle des Carmélites, Toulouse" data-reveal-scale />
         <div className="hero-scrim" />
         <span className="hero-credit">
@@ -25,14 +31,14 @@ export default function Hero() {
           <p data-en>Classical guitarist. A repertoire held between the Bach suites, the nineteenth-century Spanish school, and the music of our own time.</p>
         </div>
         <div className="hero-actions" data-reveal>
-          <button type="button" className="btn btn-watch" onClick={() => open('main')}>
+          <button type="button" ref={watchRef} className="btn btn-watch magnetic" onClick={() => open('main')}>
             <span className="btn-watch-icon">▶</span>
             <span data-fr>Regarder</span><span data-en>Watch</span>
           </button>
-          <NavLink to="agenda" no="IV" title="Agenda" className="btn btn-outline">
+          <NavLink ref={datesRef} to="agenda" no="IV" title="Agenda" className="btn btn-outline magnetic">
             <span data-fr>Prochaines dates</span><span data-en>Upcoming dates</span>
           </NavLink>
-          <NavLink to="projets" no="III" title="Projets" className="btn btn-ghost">
+          <NavLink ref={projectsRef} to="projets" no="III" title="Projets" className="btn btn-ghost magnetic">
             <span data-fr>Projets</span><span data-en>Projects</span>
           </NavLink>
         </div>
